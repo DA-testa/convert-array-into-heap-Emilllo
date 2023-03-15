@@ -1,13 +1,13 @@
-# python3
+# 221RDB231 Emīlija Ostaševska 4.gr
 
 
 def build_heap(data):
     swaps = []
-    # TODO: Creat heap and heap sort
-    # try to achieve  O(n) and not O(n2)
     n = len(data)
+
     for i in range(n // 2, -1, -1):
         parent = i
+
         while True:
             left_child = 2 * i + 1
             right_child = 2 * i + 2
@@ -22,34 +22,27 @@ def build_heap(data):
                 i = parent
             else:
                 break
+
     return swaps
 
 
 def main():
-    
     fi = input("I or F: ")
     n = 0
+
     if "I" in fi or "i" in fi:
         n = int(input())
         data = list(map(int, input().split()))
+
     elif "F" in fi or "f" in fi:
         test_num = input("Choose test number (only 04 lol): ")
         with open(f"tests/{test_num}", "r") as file:
             n = int(file.readline().strip())
             data = list(map(int, file.readline().strip().split())) 
 
-    # checks if lenght of data is the same as the said lenght
     assert len(data) == n
-
-    # calls function to assess the data 
-    # and give back all swaps
     swaps = build_heap(data)
 
-    # TODO: output how many swaps were made, 
-    # this number should be less than 4n (less than 4*len(data))
-
-
-    # output all swaps
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
